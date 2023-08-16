@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="phaser.min.js"></script>
+    <link rel="stylesheet" href="font-awesome-5/css/fontawesome-all.min.css">
+</head>
+
+  <body>
+    <div id="container">
+      
+    </div>
+  
+
+ 
+    <script>
+      class Example extends Phaser.Scene
+{
+    preload ()
+    {
+        this.load.image('bg', 'assets/skies/darkstone.png');
+        this.load.image('flare', 'assets/particles/white-flare.png');
+        this.load.image('fox', 'assets/pics/back.jpg');
+        this.load.image('lizard', 'assets/pics/soeharto.png');
+        this.load.image('tomo', 'assets/pics/tomo.jpg');
+        this.load.image('kartini', 'assets/pics/kartini.jpg');
+    }
+
+    create ()
+    {
+        this.add.image(400, 300, 'bg');
+
+        const card1 = this.add.image(200, 300, 'fox').setInteractive();
+        const card2 = this.add.image(530, 300, 'lizard').setInteractive();
+        const card3 = this.add.image(850, 300, 'tomo').setInteractive();
+        const card4 = this.add.image(1170, 300, 'kartini').setInteractive();
+
+        // Event listener for card1
+          card1.on('pointerup', () => {
+            window.location.href = 'soekarno'; // Ganti dengan URL yang diinginkan
+        });
+
+        // Event listener for card2
+        card2.on('pointerup', () => {
+            window.location.href = 'https://www.example2.com'; // Ganti dengan URL yang diinginkan
+        });
+
+        // Event listener for card2
+        card3.on('pointerup', () => {
+            window.location.href = 'https://www.example2.com'; // Ganti dengan URL yang diinginkan
+        });
+
+        // Event listener for card2
+        card4.on('pointerup', () => {
+            window.location.href = 'https://www.example2.com'; // Ganti dengan URL yang diinginkan
+        });
+
+        const zone1 = new Phaser.GameObjects.Particles.Zones.EdgeZone(card1.getBounds(), 42);
+        const zone2 = new Phaser.GameObjects.Particles.Zones.EdgeZone(card2.getBounds(), 42);
+        const zone3 = new Phaser.GameObjects.Particles.Zones.EdgeZone(card3.getBounds(), 42);
+        const zone4 = new Phaser.GameObjects.Particles.Zones.EdgeZone(card4.getBounds(), 42);
+
+        const emitter = this.add.particles(0, 0, 'flare', {
+            speed: 24,
+            lifespan: 1500,
+            quantity: 5,
+            scale: { start: 0.4, end: 0 },
+            advance: 2000,
+            emitZone: [ zone1, zone2, zone3, zone4 ]
+        });
+
+        card1.on('pointerover', () => {
+
+            emitter.setEmitZone(zone1);
+            emitter.fastForward(2000);
+
+        });
+
+        card2.on('pointerover', () => {
+
+            emitter.setEmitZone(zone2);
+            emitter.fastForward(2000);
+
+        });
+
+        card3.on('pointerover', () => {
+
+            emitter.setEmitZone(zone3);
+            emitter.fastForward(2000);
+
+        });
+
+        card4.on('pointerover', () => {
+
+            emitter.setEmitZone(zone4);
+            emitter.fastForward(2000);
+
+        });
+         // Add cursor change on pointerover for each card
+    card1.on('pointerover', () => {
+      this.input.setDefaultCursor('url(assets/input/cursors/sc2/SC2-cursor-protoss.cur), pointer');
+  });
+
+  card2.on('pointerover', () => {
+      this.input.setDefaultCursor('url(assets/input/cursors/sc2/SC2-cursor-protoss.cur), pointer');
+  });
+
+  card3.on('pointerover', () => {
+      this.input.setDefaultCursor('url(assets/input/cursors/sc2/SC2-cursor-protoss.cur), pointer');
+  });
+
+  card4.on('pointerover', () => {
+      this.input.setDefaultCursor('url(assets/input/cursors/sc2/SC2-cursor-protoss.cur), pointer');
+  });
+    }
+}
+
+const config = {
+    type: Phaser.AUTO,
+    width: 1350,
+    height: 650,
+    backgroundColor: '#000',
+    parent: 'container',
+    scene: Example
+};
+
+const game = new Phaser.Game(config);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
+

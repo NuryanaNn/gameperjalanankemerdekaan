@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Game Tembak-tembakan</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        .game-container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            border: 2px solid #000;
+        }
+        
+        .player, .bullet {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+        }
+        
+        .player {
+            bottom: 0;
+        }
+        
+        .bullet {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="player"></div>
+        <div class="bullet"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const player = document.querySelector('.player');
+const bullet = document.querySelector('.bullet');
+
+let isBulletShot = false;
+
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space' && !isBulletShot) {
+        isBulletShot = true;
+        bullet.style.left = player.offsetLeft + player.offsetWidth / 2 + 'px';
+        bullet.style.display = 'block';
+        
+        shootBullet();
+    }
+});
+
+function shootBullet() {
+    let bulletTop = bullet.offsetTop;
+
+    const bulletInterval = setInterval(() => {
+        bulletTop -= 5;
+        bullet.style.top = bulletTop + 'px';
+
+        if (bulletTop < 0) {
+            clearInterval(bulletInterval);
+            bullet.style.display = 'none';
+            isBulletShot = false;
+        }
+    }, 10);
+}
+
+    </script>
+</body>
+</html>

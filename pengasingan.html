@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mengatasi Rintangan</title>
+</head>
+<style>
+    /* ... Kode CSS sebelumnya ... */
+
+    .play-area {
+        position: relative;
+        min-height: 40vh;
+        width: 100%;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Mengatur elemen berada di tengah-tengah */
+    }
+
+.character {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #e74c3c;
+    left: 50px;
+    bottom: 0;
+    transition: left 0.2s ease-in-out;
+}
+
+.obstacle {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #3498db;
+    left: 250px;
+    bottom: 0;
+    animation: moveObstacle 2s linear infinite;
+}
+
+
+@keyframes moveObstacle {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+
+
+
+
+</style>
+<body>
+    <div class="game-container">
+        <h1>Mengatasi Rintangan</h1>
+        <div class="timer">waktu</div>
+        <div class="play-area">
+            <div class="character">
+                <img src="avatar.png" alt="">
+            </div>
+            <div class="obstacle"></div>
+        </div>
+    </div>
+    <script>
+        const character = document.querySelector(".character");
+        const obstacle = document.querySelector(".obstacle");
+        let jumping = false;
+        let jumpHeight = 0;
+
+        document.addEventListener("keydown", jump);
+
+        function jump(event) {
+            if (event.keyCode === 32 && !jumping) {
+                jumping = true;
+                jumpHeight = 0;
+                jumpUp();
+            }
+        }
+
+        function jumpUp() {
+            if (jumpHeight < 100) {
+                jumpHeight += 5;
+                character.style.bottom = jumpHeight + "px";
+                setTimeout(jumpUp, 20);
+            } else {
+                jumpDown();
+            }
+        }
+
+        function jumpDown() {
+            if (jumpHeight > 0) {
+                jumpHeight -= 5;
+                character.style.bottom = jumpHeight + "px";
+                setTimeout(jumpDown, 20);
+            } else {
+                jumping = false;
+            }
+        }
+
+        let timerCount = 5;
+        const timerDisplay = document.querySelector(".timer");
+
+        function updateTimer() {
+            timerDisplay.textContent = timerCount + " Detik";
+            if (timerCount === 0) {
+                clearInterval(timerInterval);
+                timerDisplay.textContent = "Selamat, Anda Sudah Sampai!";
+                stopObstacleAnimation();
+            }
+            timerCount--;
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+
+        function stopObstacleAnimation() {
+            obstacle.style.animation = "none";
+        }
+
+        setInterval(() => {
+            const characterBottom = parseInt(window.getComputedStyle(character).getPropertyValue("bottom"));
+            const obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
+
+            if (obstacleLeft <= 90 && obstacleLeft >= 10 && characterBottom <= 40) {
+                alert("Game Over! Coba lagi.");
+                location.reload();
+            }
+        }, 10);
+
+
+            </script>
+</body>
+</html>

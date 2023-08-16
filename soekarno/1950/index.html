@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konferensi Meja Bundar</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+    }
+    
+    .game-container {
+        text-align: center;
+    }
+    
+    .question {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .option {
+        font-size: 18px;
+        margin: 10px;
+        padding: 10px 20px;
+        border: 1px solid #3498db;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+    
+    .option:hover {
+        background-color: #3498db;
+        color: white;
+    }
+</style>
+<body>
+    <div class="game-container">
+        <h1>Konferensi Meja Bundar</h1>
+        <div class="question">
+            Pilih tindakan yang tepat dalam perundingan:
+        </div>
+        <div class="options">
+            <div class="option" id="accept">Terima Tawaran</div>
+            <div class="option" id="reject">Tolak Tawaran</div>
+        </div>
+        <div class="result"></div>
+    </div>
+
+    <script>
+        const acceptOption = document.getElementById("accept");
+        const rejectOption = document.getElementById("reject");
+        const resultContainer = document.querySelector(".result");
+
+        acceptOption.addEventListener("click", () => {
+            showResult("Anda telah menerima tawaran perundingan.");
+        });
+
+        rejectOption.addEventListener("click", () => {
+            showResult("Anda telah menolak tawaran perundingan.");
+        });
+
+        function showResult(message) {
+            resultContainer.textContent = message;
+        }
+    </script>
+</body>
+</html>

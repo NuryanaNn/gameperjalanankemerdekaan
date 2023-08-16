@@ -1,0 +1,71 @@
+body {
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container .prolog{
+    width: 500px;
+    background-image: url(bgProlog.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 50px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .prolog h1{
+    background-image: url(bannerProlog.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px 0;
+}
+
+.container .prologText{
+    text-align: center;
+    margin-top: 20px;
+    width: 400px;
+}
+
+
+.prolog p{
+    font-size: 14px;
+}
+
+.container .prolog .back{
+    margin-top: 30px;
+}
+
+.container .prolog a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+#board {
+    height: 532px;
+    width: 475px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    border: 10px solid lightgrey;
+}
+
+.card {
+    height: 128px;
+    width: 90px;
+    margin: 2.5px;
+}

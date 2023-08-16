@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.container .prolog{
+    width: 500px;
+    background-image: url(bgProlog.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .prolog h1{
+    background-image: url(bannerProlog.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px 0;
+}
+
+.container .prologText{
+    text-align: center;
+    margin-top: 20px;
+    width: 400px;
+}
+
+.prolog p{
+    font-size: 14px;
+    padding: 10px;
+}
+
+.container .prolog .back{
+    margin-top: 30px;
+}
+
+.container .prolog a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.game-container {
+    text-align: center;
+    width: 500px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-size: 18px;
+}
+
+.answer-input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.game-container input{
+    border: #2ecc71;
+    outline: none;
+    padding: 10px 20px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.result {
+    display: none;
+}
+
+.result-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.next-button {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+
+.back-button {
+display: none;
+}
+
